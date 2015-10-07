@@ -110,8 +110,15 @@ class SongSheet
     protected function calculateColumns()
     {
         $columns = (int) $this->options['columns'];
-        $colSpace = $this->pageWidth / $columns;
-        $gutter = ($colSpace - $this->style['columnWidth']) / 2;
+
+        // Shifts the page for odd and even pages for 3 hole punching margin
+        if (!empty($this->style['binderMargin']) && $this->style['binderMargin']) {
+          $colSpace = ($this->pageWidth - $this->style['binderMargin']) / $columns;
+          $gutter = ($colSpace - $this->style['columnWidth']) / 2;
+        } else {
+          $colSpace = $this->pageWidth / $columns;
+          $gutter = ($colSpace - $this->style['columnWidth']) / 2;
+        }
         $this->gutter = $gutter;
 
         $cols = array();
@@ -168,6 +175,14 @@ class SongSheet
             'formatted'  => $this->options['formatted'],
             'style'      => $this->options['style'],
         ], $options);
+
+        // Shifts the page for odd and even pages for 3 hole punching margin
+        if (!empty($this->style['binderMargin']) && $this->style['binderMargin']) {
+          if ($this->pdf->PageNo() % 2) {
+            // Only for odd pages, give left margin
+            $options['x'] = $this->style['binderMargin'] + ($this->column * $colWidth + $this->gutter);
+          }
+        }
 
         $options['y'] += $this->topY;
 

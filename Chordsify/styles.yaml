@@ -44,23 +44,24 @@ default:
         fontSize: 12
 
 band:
-    columnWidth: 275
+    columnWidth: 260
 
     align: L
 
-    chordFontSize: 14
-    chordLineHeight: 13
-    chordShift: -3
+    chordFontSize: 13
+    chordLineHeight: 12
+    chordShift: -2
 
     font: FreeSansBold.ttf
-    fontSize: 14
-    lineHeight: 14
+    fontSize: 13
+    lineHeight: 13
 
     idSeparator: " - "
 
-    # settings only used for writing "Chords" version
     titleBorder: true
     titleBorderSpace: 6
+
+    binderMargin: 40
 
     lyrics:
         chorus:
