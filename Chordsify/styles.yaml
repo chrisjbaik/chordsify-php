@@ -42,6 +42,40 @@ default:
     pagenumber:
         font: PTS75F.ttf # bold
         fontSize: 12
+        
+chords:
+    columnWidth: 250
+
+    align: L
+
+    chordFontSize: 12
+    chordLineHeight: 10
+    chordShift: -2
+
+    font: FreeSansBold.ttf
+    fontSize: 12
+    lineHeight: 14
+
+    idSeparator: " - "
+
+    # settings only used for writing "Chords" version
+    titleBorder: true
+    titleBorderSpace: 6
+
+    lyrics:
+        chorus:
+            indent: 12
+            prefix:
+                text: "*"
+                lineOffset: 18
+                fontSize: 24
+        bridge:
+            indent: 24
+
+    title:
+        font: FreeSansBold.ttf # bold
+        fontSize: 14
+        lineOffset: 7
 
 center:
     align: C

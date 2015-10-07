@@ -17,7 +17,7 @@ class Chunk extends Unit
         return $this;
     }
 
-    public function write($writer)
+    public function write(Writer $writer)
     {
         if (isset($this->children['chord'])) {
             $chord = $this->children['chord']->write($writer);

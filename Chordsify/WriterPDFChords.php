@@ -63,8 +63,14 @@ class WriterPDFChords extends Writer
         }
         $this->writeCell($this->x, $this->y + $this->style['lineOffset'], $text);
 
+        $afterTitleY = $this->style['lineHeight'];
+        if ($this->style['titleBorder']) {
+            $this->drawBorderBottom($this->x, $this->y + $this->style['lineOffset']);
+            $afterTitleY = $afterTitleY + $this->style['titleBorderSpace'];
+        }
+
         $this->pdf->setFontStretching($this->options['condensing']);
-        $this->moveY($this->style['lineHeight']);
+        $this->moveY($afterTitleY);
     }
 
     public function song(Song $song, array $sections) {
@@ -86,7 +92,7 @@ class WriterPDFChords extends Writer
         if ( ! empty($this->style['text'])) {
             $y = $this->y + $this->style['lineOffset'];
 
-            $firstParagraph = array_shift($section->children());
+            $firstParagraph = $section->children()[0];
             if ($firstParagraph->hasChords) {
                 $y += $this->style['chordLineHeight'];
                 if ($this->chords !== null) {
@@ -331,5 +337,13 @@ class WriterPDFChords extends Writer
             true,                  // ignore min-height
             'L'                    // align cell to font baseline
         );
+    }
+
+    public function drawBorderBottom($x, $y)
+    {
+        $borderXBegin = $this->left + $x;
+        $borderXEnd = $borderXBegin + $this->style['columnWidth'];
+        $borderY = $this->top + $y + $this->style['titleBorderSpace'];
+        $this->pdf->Line($borderXBegin, $borderY, $borderXEnd, $borderY, array('color' => array(100, 100, 100)));
     }
 }
