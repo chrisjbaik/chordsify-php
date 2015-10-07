@@ -42,18 +42,18 @@ default:
     pagenumber:
         font: PTS75F.ttf # bold
         fontSize: 12
-        
-chords:
-    columnWidth: 250
+
+band:
+    columnWidth: 275
 
     align: L
 
-    chordFontSize: 12
-    chordLineHeight: 10
-    chordShift: -2
+    chordFontSize: 14
+    chordLineHeight: 13
+    chordShift: -3
 
     font: FreeSansBold.ttf
-    fontSize: 12
+    fontSize: 14
     lineHeight: 14
 
     idSeparator: " - "
