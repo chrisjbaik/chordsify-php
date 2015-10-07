@@ -92,7 +92,7 @@ class WriterPDFChords extends Writer
         if ( ! empty($this->style['text'])) {
             $y = $this->y + $this->style['lineOffset'];
 
-            $firstParagraph = array_shift($section->children());
+            $firstParagraph = $section->children()[0];
             if ($firstParagraph->hasChords) {
                 $y += $this->style['chordLineHeight'];
                 if ($this->chords !== null) {

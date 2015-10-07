@@ -35,7 +35,7 @@ class ChordRoot extends UnitLeaf
         return $this->relativeValue;
     }
 
-    public function text()
+    public function text(array $options = [])
     {
         return $this->root->text($this->song->originalKey()->isFlatScale());
     }
